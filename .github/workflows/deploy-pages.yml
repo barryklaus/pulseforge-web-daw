@@ -40,7 +40,7 @@ jobs:
         env:
           PAGES_BASE_PATH: /pulseforge-web-daw
 
-     - name: Put design files in the right place
+      - name: Put design files in the right place
         run: mv dist/client/pulseforge-web-daw/_next dist/client/_next
 
       - uses: actions/upload-pages-artifact@v3
