@@ -1,37 +1,52 @@
-# Pulseforge
+# Pulseforge Browser DAW V1
 
-A compact browser-only beat studio built with the Web Audio API. Pulseforge includes a 16-step drum sequencer, playable sawtooth synth, eight-channel mixer concept, local project memory, and offline WAV export. Audio and project data stay on your device.
+Pulseforge is a functional, browser-only digital audio workstation. It uses the Web Audio, MediaRecorder, and Web MIDI APIs; projects and audio stay on the device unless the user downloads or uploads a project file.
 
-## Features
+## V1 features
 
-- Four synthesized drum voices: kick, snare, hi-hat, and clap
-- 16-step transport with 60–180 BPM and one-shot/loop modes
-- Playable eight-note synth keyboard
-- Eight mixer channels with volume, mute, and solo controls
-- Local save/load using browser storage
-- One-bar 44.1 kHz WAV export
-- Responsive desktop and tablet layout
+- Complete project model with New, Open, Save, recovery autosave, and embedded recorded/imported audio
+- Play, pause, stop, song-position display, BPM, 4/4, 3/4, and 6/8 grids
+- Microphone/audio-interface recording into armed audio tracks, with optional input monitoring
+- Web MIDI and computer-keyboard input, live instrument playing, and MIDI recording
+- Multi-bar timeline with audio, MIDI, and drum tracks
+- Select, cut, copy, paste, split, delete, drag/move, clip looping, and snap-to-grid editing
+- Per-track volume, pan, mute, solo, arming, monitoring, and live level meters
+- Insert EQ, compressor, delay, and convolution reverb
+- Built-in poly synth, bass synth, sample instrument, and synthesized drum kit
+- Piano-roll note drawing/editing with note length and velocity
+- 16-step drum editor
+- Undo/redo history and automatic local recovery
+- Offline WAV and MP3 rendering
+- Responsive desktop, tablet, and narrow-screen interface
 
 ## Run locally
 
-Install Node.js 22 and pnpm, then:
+Install Node.js 22.13+ and pnpm, then run:
 
 ```bash
 pnpm install
 pnpm dev
 ```
 
-Open `http://localhost:3000`. Press Space to start or stop playback. Browsers require the first sound to be started by a click or key press.
+Open `http://localhost:3000`. The first audio action must be initiated by a click or key press. Audio recording requires browser permission for the selected microphone or interface. Web MIDI support depends on the browser and device.
 
 ## Deploy to GitHub Pages
 
-1. Create a new GitHub repository and upload this folder (or push it with Git).
-2. In the repository, open **Settings → Pages**.
-3. Under **Build and deployment**, choose **GitHub Actions** as the source.
-4. Push to the `main` branch. The included workflow builds and publishes the site.
+1. Upload the repository contents to the root of a GitHub repository.
+2. In **Settings → Pages**, select **GitHub Actions** as the source.
+3. Push or upload a change to the `main` branch.
+4. The included workflow builds and deploys the static app.
 
-The finished URL will be `https://YOUR-USERNAME.github.io/YOUR-REPOSITORY/`.
+The URL will be `https://YOUR-USERNAME.github.io/YOUR-REPOSITORY/`.
 
-## Technology
+The deployment workflow includes the asset-path adjustment needed by this Vinext static export on GitHub Pages.
 
-React, TypeScript, Vinext/Vite, Tailwind CSS, and the native Web Audio API. No backend, user account, sample library, or analytics are required.
+## Project files and privacy
+
+**Save** downloads a `.pulseforge.json` file containing the full session, including short recorded/imported audio clips and sampler data. **Open** restores that file. Autosave uses local browser storage; very large recordings can exceed the browser's local quota, so download a project file regularly.
+
+No backend, account, analytics, or cloud upload is required.
+
+## Stack
+
+React 19, TypeScript, Vinext/Vite, Tailwind CSS, Web Audio API, MediaRecorder, Web MIDI, and `@breezystack/lamejs` for local MP3 encoding.

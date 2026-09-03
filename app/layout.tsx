@@ -6,8 +6,8 @@ const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] });
 const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Pulseforge — Browser Beat Studio',
-  description: 'A playable browser-only drum sequencer, synth, and eight-channel mixer.',
+  title: 'Pulseforge — Browser DAW',
+  description: 'A complete browser-only DAW with audio and MIDI recording, arrangement, instruments, effects, mixing, autosave, and WAV/MP3 export.',
 };
 
 export default function RootLayout({
